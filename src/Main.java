@@ -1,20 +1,22 @@
 public class Main {
     public static void main(String[] args) {
-        Book book1 = new Book("Effective Java", "Joshua Bloch");
-        Book book2 = new Book("Clean Code", "Robert C. Martin");
+        Book[] books = new Book[2];
+        books[0] = new Book("Effective Java", "Joshua Bloch");
+        books[1] = new Book("Clean Code", "Robert C. Martin");
 
         Library library = new Library();
 
-        library.addBook(book1);
-        library.addBook(book2);
+        for (Book book : books) {
+            library.addBook(book);
+        }
 
         System.out.println("Initial Catalog:");
         library.displayCatalog();
 
-        book1.setAvailability(false);
+        books[0].setAvailability(false);
 
         System.out.println("\nDetails of the first book after updating availability:");
-        System.out.println(book1.getBookDetails());
+        System.out.println(books[0].getBookDetails());
 
         System.out.println("\nUpdated Catalog:");
         library.displayCatalog();
