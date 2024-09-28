@@ -13,9 +13,17 @@ public class Main {
         System.out.println("Initial Catalog:");
         library.displayCatalog();
 
-        books[0].setAvailability(false);
+        books[0].borrowBook();
 
-        System.out.println("\nDetails of the first book after updating availability:");
+        System.out.println("\nDetails of the first book after borrowing:");
+        System.out.println(books[0].getBookDetails());
+
+        System.out.println("\nUpdated Catalog:");
+        library.displayCatalog();
+
+        books[0].returnBook();
+
+        System.out.println("\nDetails of the first book after returning:");
         System.out.println(books[0].getBookDetails());
 
         System.out.println("\nUpdated Catalog:");

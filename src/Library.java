@@ -1,11 +1,10 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class Library {
-    private List<Book> catalog;
+    private ArrayList<Book> catalog;
 
     public Library() {
-        catalog = new ArrayList<>();
+        this.catalog = new ArrayList<>();
     }
 
     public void addBook(Book book) {
@@ -16,5 +15,7 @@ public class Library {
         for (Book book : catalog) {
             System.out.println(book.getBookDetails());
         }
+
+        Book.displayBookStats();
     }
 }
