@@ -15,7 +15,10 @@ public class Library {
         for (Book book : catalog) {
             System.out.println(book.getBookDetails());
         }
-
         Book.displayBookStats();
+    }
+
+    public ArrayList<Book> getCatalog() {
+        return new ArrayList<>(catalog);
     }
 }

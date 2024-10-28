@@ -14,7 +14,6 @@ public class Main {
         library.displayCatalog();
 
         books[0].borrowBook();
-
         System.out.println("\nDetails of the first book after borrowing:");
         System.out.println(books[0].getBookDetails());
 
@@ -22,7 +21,6 @@ public class Main {
         library.displayCatalog();
 
         books[0].returnBook();
-
         System.out.println("\nDetails of the first book after returning:");
         System.out.println(books[0].getBookDetails());
 
