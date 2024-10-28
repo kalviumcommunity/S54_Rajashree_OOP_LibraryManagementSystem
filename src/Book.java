@@ -14,6 +14,30 @@ public class Book {
         availableBooks++;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
+    }
+
     public String getBookDetails() {
         return "Title: " + title + ", Author: " + author + ", Available: " + isAvailable;
     }
@@ -39,5 +63,13 @@ public class Book {
     public static void displayBookStats() {
         System.out.println("Total Books in Library: " + totalBooks);
         System.out.println("Available Books: " + availableBooks);
+    }
+
+    public static int getTotalBooks() {
+        return totalBooks;
+    }
+
+    public static int getAvailableBooks() {
+        return availableBooks;
     }
 }
