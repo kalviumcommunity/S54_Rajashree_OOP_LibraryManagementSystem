@@ -6,6 +6,14 @@ public class Book {
     private static int totalBooks = 0;
     private static int availableBooks = 0;
 
+    public Book() {
+        this.title = "Unknown Title";
+        this.author = "Unknown Author";
+        this.isAvailable = true;
+        totalBooks++;
+        availableBooks++;
+    }
+
     public Book(String title, String author) {
         this.title = title;
         this.author = author;
