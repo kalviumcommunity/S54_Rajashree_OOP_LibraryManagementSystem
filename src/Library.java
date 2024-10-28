@@ -5,6 +5,7 @@ public class Library {
 
     public Library() {
         this.catalog = new ArrayList<>();
+
     }
 
     public void addBook(Book book) {
