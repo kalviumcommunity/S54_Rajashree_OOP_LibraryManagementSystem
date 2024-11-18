@@ -1,35 +1,31 @@
 public class Main {
     public static void main(String[] args) {
-        // Creating books using both default and parameterized constructors
-        Book[] books = new Book[3];
-        books[0] = new Book("Effective Java", "Joshua Bloch");
-        books[1] = new Book("Clean Code", "Robert C. Martin");
-        books[2] = new Book();
+        Book physicalBook = new Book("Effective Java", "Joshua Bloch");
+        DigitalBook digitalBook = new DigitalBook("Clean Code", "Robert C. Martin", "PDF", 2.5);
+        SpecialCollectionBook specialBook = new SpecialCollectionBook("Design Patterns", "Erich Gamma", "EPUB", 3.0, "Restricted");
 
         Library library = new Library();
 
         // Adding books to the library
-        for (Book book : books) {
-            library.addBook(book);
-        }
+        library.addBook(physicalBook);
+        library.addBook(digitalBook);
+        library.addBook(specialBook);
 
         // Display initial catalog
         System.out.println("Initial Catalog:");
         library.displayCatalog();
 
-        // Borrow and return a book
-        books[0].borrowBook();
-        System.out.println("\nDetails of the first book after borrowing:");
-        System.out.println(books[0].getBookDetails());
+        // Borrow and return operations
+        physicalBook.borrowBook();
+        System.out.println("\nDetails of the physical book after borrowing:");
+        System.out.println(physicalBook.getBookDetails());
 
-        System.out.println("\nUpdated Catalog:");
-        library.displayCatalog();
+        digitalBook.borrowBook();
+        System.out.println("\nDetails of the digital book after borrowing:");
+        System.out.println(digitalBook.getBookDetails());
 
-        books[0].returnBook();
-        System.out.println("\nDetails of the first book after returning:");
-        System.out.println(books[0].getBookDetails());
-
-        System.out.println("\nUpdated Catalog:");
-        library.displayCatalog();
+        specialBook.borrowBook();
+        System.out.println("\nDetails of the special collection book after borrowing:");
+        System.out.println(specialBook.getBookDetails());
     }
 }
