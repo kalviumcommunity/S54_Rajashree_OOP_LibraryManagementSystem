@@ -15,6 +15,16 @@ public class Main {
         System.out.println("Initial Catalog:");
         library.displayCatalog();
 
+        // Demonstrating Search Books
+        System.out.println("\nSearching for books by Title:");
+        library.searchBooks("Effective Java");
+
+        System.out.println("\nSearching for books by Author:");
+        library.searchBooksByAuthor("Robert C. Martin");
+
+        System.out.println("\nSearching for Available Books:");
+        library.searchBooks(true);
+
         // Borrow and return operations
         physicalBook.borrowBook();
         System.out.println("\nDetails of the physical book after borrowing:");
