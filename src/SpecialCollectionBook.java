@@ -15,7 +15,7 @@ public class SpecialCollectionBook extends DigitalBook {
     }
 
     @Override
-    public String getBookDetails() {
-        return super.getBookDetails() + ", Access Level: " + accessLevel;
+    public String getItemDetails() {
+        return super.getItemDetails() + ", Access Level: " + accessLevel;
     }
 }

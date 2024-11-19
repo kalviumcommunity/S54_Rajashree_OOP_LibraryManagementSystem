@@ -82,36 +82,36 @@ public class Main {
                     break;
 
                 case 4: // Borrow Book
-                    System.out.print("Enter Title of Book to Borrow: ");
+                    System.out.print("Enter Title of Item to Borrow: ");
                     String borrowTitle = scanner.nextLine();
                     boolean found = false;
-                    for (Book book : library.getCatalog()) {
-                        if (book.getTitle().equalsIgnoreCase(borrowTitle)) {
-                            book.borrowBook();
-                            System.out.println("Borrowed Successfully: " + book.getBookDetails());
+                    for (LibraryItem item : library.getCatalog()) {
+                        if (item.getTitle().equalsIgnoreCase(borrowTitle)) {
+                            item.borrowItem(); // Virtual function call
+                            System.out.println("Updated Status: " + item.getItemDetails());
                             found = true;
                             break;
                         }
                     }
                     if (!found) {
-                        System.out.println("Book not found or unavailable.");
+                        System.out.println("Item not found or unavailable.");
                     }
                     break;
 
                 case 5: // Return Book
-                    System.out.print("Enter Title of Book to Return: ");
+                    System.out.print("Enter Title of Item to Return: ");
                     String returnTitle = scanner.nextLine();
                     found = false;
-                    for (Book book : library.getCatalog()) {
-                        if (book.getTitle().equalsIgnoreCase(returnTitle)) {
-                            book.returnBook();
-                            System.out.println("Returned Successfully: " + book.getBookDetails());
+                    for (LibraryItem item : library.getCatalog()) {
+                        if (item.getTitle().equalsIgnoreCase(returnTitle)) {
+                            item.returnItem(); // Virtual function call
+                            System.out.println("Updated Status: " + item.getItemDetails());
                             found = true;
                             break;
                         }
                     }
                     if (!found) {
-                        System.out.println("Book not found or already available.");
+                        System.out.println("Item not found or already available.");
                     }
                     break;
 

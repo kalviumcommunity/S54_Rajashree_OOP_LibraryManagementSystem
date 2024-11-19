@@ -25,7 +25,7 @@ public class DigitalBook extends Book {
     }
 
     @Override
-    public String getBookDetails() {
-        return super.getBookDetails() + ", File Format: " + fileFormat + ", File Size: " + fileSize + "MB";
+    public String getItemDetails() {
+        return super.getItemDetails() + ", File Format: " + fileFormat + ", File Size: " + fileSize + "MB";
     }
 }

@@ -1,33 +1,32 @@
 import java.util.ArrayList;
 
 public class Library {
-    private ArrayList<Book> catalog;
+    private ArrayList<LibraryItem> catalog;
 
     public Library() {
         this.catalog = new ArrayList<>();
     }
 
-    public void addBook(Book book) {
-        catalog.add(book);
+    public void addBook(LibraryItem item) {
+        catalog.add(item);
     }
 
     public void displayCatalog() {
-        for (Book book : catalog) {
-            System.out.println(book.getBookDetails());
+        for (LibraryItem item : catalog) {
+            System.out.println(item.getItemDetails());
         }
-        Book.displayBookStats();
     }
 
-    public ArrayList<Book> getCatalog() {
+    public ArrayList<LibraryItem> getCatalog() {
         return new ArrayList<>(catalog);
     }
 
     // Search by Title
     public void searchBooks(String title) {
         System.out.println("Searching for books by Title: " + title);
-        for (Book book : catalog) {
-            if (book.getTitle().equalsIgnoreCase(title)) {
-                System.out.println(book.getBookDetails());
+        for (LibraryItem item : catalog) {
+            if (item.getTitle().equalsIgnoreCase(title)) {
+                System.out.println(item.getItemDetails());
             }
         }
     }
@@ -35,9 +34,9 @@ public class Library {
     // Search by Author
     public void searchBooksByAuthor(String author) {
         System.out.println("Searching for books by Author: " + author);
-        for (Book book : catalog) {
-            if (book.getAuthor().equalsIgnoreCase(author)) {
-                System.out.println(book.getBookDetails());
+        for (LibraryItem item : catalog) {
+            if (item.getAuthor().equalsIgnoreCase(author)) {
+                System.out.println(item.getItemDetails());
             }
         }
     }
@@ -45,9 +44,9 @@ public class Library {
     // Search by Availability
     public void searchBooks(boolean isAvailable) {
         System.out.println("Searching for books by Availability: " + (isAvailable ? "Available" : "Borrowed"));
-        for (Book book : catalog) {
-            if (book.isAvailable() == isAvailable) {
-                System.out.println(book.getBookDetails());
+        for (LibraryItem item : catalog) {
+            if (item.isAvailable() == isAvailable) {
+                System.out.println(item.getItemDetails());
             }
         }
     }
