@@ -4,8 +4,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Library library = new Library();
+        SearchService searchService = new SearchService(library);
 
-        // Adding some initial books to the library
         library.addBook(new Book("Effective Java", "Joshua Bloch"));
         library.addBook(new DigitalBook("Clean Code", "Robert C. Martin", "PDF", 2.5));
         library.addBook(new SpecialCollectionBook("Design Patterns", "Erich Gamma", "EPUB", 3.0, "Restricted"));
@@ -21,13 +21,13 @@ public class Main {
             System.out.println("6. Exit");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
-                case 1: // Add a Book
+                case 1:
                     System.out.println("Enter Book Type (1: Physical, 2: Digital, 3: Special Collection): ");
                     int type = scanner.nextInt();
-                    scanner.nextLine(); // Consume newline
+                    scanner.nextLine();
                     System.out.print("Enter Title: ");
                     String title = scanner.nextLine();
                     System.out.print("Enter Author: ");
@@ -46,7 +46,7 @@ public class Main {
                         String fileFormat = scanner.nextLine();
                         System.out.print("Enter File Size (MB): ");
                         double fileSize = scanner.nextDouble();
-                        scanner.nextLine(); // Consume newline
+                        scanner.nextLine();
                         System.out.print("Enter Access Level: ");
                         String accessLevel = scanner.nextLine();
                         library.addBook(new SpecialCollectionBook(title, author, fileFormat, fileSize, accessLevel));
@@ -55,39 +55,39 @@ public class Main {
                     }
                     break;
 
-                case 2: // Display Catalog
+                case 2:
                     System.out.println("\nLibrary Catalog:");
                     library.displayCatalog();
                     break;
 
-                case 3: // Search Book
+                case 3:
                     System.out.println("Search By: 1. Title  2. Author  3. Availability");
                     int searchChoice = scanner.nextInt();
-                    scanner.nextLine(); // Consume newline
+                    scanner.nextLine();
                     if (searchChoice == 1) {
                         System.out.print("Enter Title: ");
                         String searchTitle = scanner.nextLine();
-                        library.searchBooks(searchTitle);
+                        searchService.searchBooksByTitle(searchTitle);
                     } else if (searchChoice == 2) {
                         System.out.print("Enter Author: ");
                         String searchAuthor = scanner.nextLine();
-                        library.searchBooksByAuthor(searchAuthor);
+                        searchService.searchBooksByAuthor(searchAuthor);
                     } else if (searchChoice == 3) {
                         System.out.print("Search Available Books? (true/false): ");
                         boolean isAvailable = scanner.nextBoolean();
-                        library.searchBooks(isAvailable);
+                        searchService.searchBooksByAvailability(isAvailable);
                     } else {
                         System.out.println("Invalid Search Choice!");
                     }
                     break;
 
-                case 4: // Borrow Book
+                case 4:
                     System.out.print("Enter Title of Item to Borrow: ");
                     String borrowTitle = scanner.nextLine();
                     boolean found = false;
                     for (LibraryItem item : library.getCatalog()) {
                         if (item.getTitle().equalsIgnoreCase(borrowTitle)) {
-                            item.borrowItem(); // Virtual function call
+                            item.borrowItem();
                             System.out.println("Updated Status: " + item.getItemDetails());
                             found = true;
                             break;
@@ -98,24 +98,24 @@ public class Main {
                     }
                     break;
 
-                case 5: // Return Book
+                case 5:
                     System.out.print("Enter Title of Item to Return: ");
                     String returnTitle = scanner.nextLine();
                     found = false;
                     for (LibraryItem item : library.getCatalog()) {
                         if (item.getTitle().equalsIgnoreCase(returnTitle)) {
-                            item.returnItem(); // Virtual function call
+                            item.returnItem();
                             System.out.println("Updated Status: " + item.getItemDetails());
                             found = true;
                             break;
                         }
                     }
                     if (!found) {
-                        System.out.println("Item not found or already available.");
+                        System.out.println("Item not found.");
                     }
                     break;
 
-                case 6: // Exit
+                case 6:
                     System.out.println("Exiting Library Management System. Goodbye!");
                     exit = true;
                     break;

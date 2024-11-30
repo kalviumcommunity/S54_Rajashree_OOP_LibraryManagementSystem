@@ -1,4 +1,4 @@
-public class DigitalBook extends Book {
+public class DigitalBook extends LibraryItem {
     private String fileFormat;
     private double fileSize; // Size in MB
 
@@ -12,20 +12,13 @@ public class DigitalBook extends Book {
         return fileFormat;
     }
 
-    public void setFileFormat(String fileFormat) {
-        this.fileFormat = fileFormat;
-    }
-
     public double getFileSize() {
         return fileSize;
     }
 
-    public void setFileSize(double fileSize) {
-        this.fileSize = fileSize;
-    }
-
     @Override
     public String getItemDetails() {
-        return super.getItemDetails() + ", File Format: " + fileFormat + ", File Size: " + fileSize + "MB";
+        return "Title: " + getTitle() + ", Author: " + getAuthor() + ", File Format: " + fileFormat +
+                ", File Size: " + fileSize + "MB, Available: " + isAvailable();
     }
 }
