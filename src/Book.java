@@ -1,4 +1,4 @@
-public class Book extends LibraryItem {
+public class Book extends LibraryItem implements BorrowableItem {
     private static int totalBooks = 0;
     private static int availableBooks = 0;
 
@@ -9,23 +9,29 @@ public class Book extends LibraryItem {
     }
 
     @Override
-    public String getItemDetails() { // Implementation of abstract method
+    public String getItemDetails() {
         return "Title: " + getTitle() + ", Author: " + getAuthor() + ", Available: " + isAvailable();
     }
 
     @Override
-    public void borrowItem() { // Overriding virtual method
-        super.borrowItem();
-        if (!isAvailable()) {
+    public void borrowItem() {
+        if (isAvailable()) {
+            setAvailable(false);
             availableBooks--;
+            System.out.println("Book borrowed successfully!");
+        } else {
+            System.out.println("Book is not available for borrowing.");
         }
     }
 
     @Override
-    public void returnItem() { // Overriding virtual method
-        super.returnItem();
-        if (isAvailable()) {
+    public void returnItem() {
+        if (!isAvailable()) {
+            setAvailable(true);
             availableBooks++;
+            System.out.println("Book returned successfully!");
+        } else {
+            System.out.println("Book is already available.");
         }
     }
 
