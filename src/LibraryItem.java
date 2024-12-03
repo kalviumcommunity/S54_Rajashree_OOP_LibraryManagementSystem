@@ -35,23 +35,4 @@ public abstract class LibraryItem {
 
     // Abstract method: must be implemented by subclasses
     public abstract String getItemDetails();
-
-    // Virtual method: can be overridden
-    public void borrowItem() {
-        if (isAvailable) {
-            isAvailable = false;
-            System.out.println("Borrowed Successfully!");
-        } else {
-            System.out.println("Item is not available for borrowing.");
-        }
-    }
-
-    public void returnItem() {
-        if (!isAvailable) {
-            isAvailable = true;
-            System.out.println("Returned Successfully!");
-        } else {
-            System.out.println("Item is already available.");
-        }
-    }
 }

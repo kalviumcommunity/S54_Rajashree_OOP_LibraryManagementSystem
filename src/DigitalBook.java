@@ -1,4 +1,4 @@
-public class DigitalBook extends Book {
+public class DigitalBook extends LibraryItem {
     private String fileFormat;
     private double fileSize; // Size in MB
 
@@ -26,9 +26,9 @@ public class DigitalBook extends Book {
 
     @Override
     public String getItemDetails() {
-        return super.getItemDetails() + ", File Format: " + fileFormat + ", File Size: " + fileSize + "MB";
+        return "Title: " + getTitle() + ", Author: " + getAuthor() +
+                ", Available: " + isAvailable() +
+                ", File Format: " + fileFormat +
+                ", File Size: " + fileSize + "MB";
     }
-
-    // Digital books can't be borrowed or returned in the traditional sense
-    // Thus, we do not implement BorrowableItem
 }
