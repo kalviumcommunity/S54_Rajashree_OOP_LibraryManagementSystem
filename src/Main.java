@@ -86,15 +86,16 @@ public class Main {
                     String borrowTitle = scanner.nextLine();
                     boolean found = false;
                     for (LibraryItem item : library.getCatalog()) {
-                        if (item.getTitle().equalsIgnoreCase(borrowTitle)) {
-                            item.borrowItem();
+                        if (item.getTitle().equalsIgnoreCase(borrowTitle) && item instanceof BorrowableItem) {
+                            BorrowableItem borrowableItem = (BorrowableItem) item;
+                            borrowableItem.borrowItem();
                             System.out.println("Updated Status: " + item.getItemDetails());
                             found = true;
                             break;
                         }
                     }
                     if (!found) {
-                        System.out.println("Item not found or unavailable.");
+                        System.out.println("Item not found or unavailable for borrowing.");
                     }
                     break;
 
@@ -103,8 +104,9 @@ public class Main {
                     String returnTitle = scanner.nextLine();
                     found = false;
                     for (LibraryItem item : library.getCatalog()) {
-                        if (item.getTitle().equalsIgnoreCase(returnTitle)) {
-                            item.returnItem();
+                        if (item.getTitle().equalsIgnoreCase(returnTitle) && item instanceof BorrowableItem) {
+                            BorrowableItem borrowableItem = (BorrowableItem) item;
+                            borrowableItem.returnItem();
                             System.out.println("Updated Status: " + item.getItemDetails());
                             found = true;
                             break;
